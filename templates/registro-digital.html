@@ -1,0 +1,29 @@
+{% extends "model-page.html" %}
+{% block content %}
+
+
+    <h1 class="text-center"> Cadastrar Nova Digital </h1>
+    <form enctype="multipart/form-data" action="submit", method="POST">{% csrf_token %}
+        <input type="number" class="form-control" name="digital-id" value="{{digita.id}}" hidden>
+        <div class="container">
+
+            <div class="form-group">
+                <label for="nome">Nome: </label>
+                <input class="form-control" name="nome" type="text" value="{{digital.nome}}">
+            </div>
+            <div class="form-group">
+                <a href="/media/{{digital.foto_impress_dig}}" target="blank" >Foto atual</a>
+                <input type="file" class="form-control-file border" name="file" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">
+                {% if digital %}
+                    Alterar
+                {% else %}
+                    Cadastro
+                {% endif %}
+            </button>
+
+        </div>
+    </form>
+
+{% endblock %}

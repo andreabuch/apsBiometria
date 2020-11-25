@@ -1,0 +1,32 @@
+{% extends "model-page.html" %}
+{% block style %}
+<style>
+    .polaroid{
+        width: 100px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 00.2) ;
+        text-align: center;
+    }
+    .container{
+
+        padding: 1px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+        <div class="container mb-4">
+            <div class="row">
+                {% for d in digital %}
+                <div class="col-sm-4">
+                    <a href="../detalhe/{{d.id}}"> <!-- .. desce um nivel/-->
+                        <div class="polaroid">
+                            <img src="{{ d.foto_impress_dig.url }}" style="width: 100% ">
+                            <div class="container">                                 
+                                <p>{{ d.nome }}</p>  
+                            </div>
+                        </div>
+                    </a>    
+                </div>
+                {% endfor %}
+            </div>
+        </div>       
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "model-page.html" %}
+{% block content %}
+
+<h1 class="text-center">Detalhes</h1>
+<div class="modal fade" id="modal-confirm">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Deseja confirmar exclusão? </h1>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body text-right">
+                <a href="/digital/excluir/{{digital.id}}/">
+                    <button type="button" class="btn btn-danger">
+                        EXCLUIR
+                    </button>
+                </a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                        CANCELAR
+                </button> 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container np-4 mb-4">
+    <div class="row">
+        <div class="col-sm-4">
+            <div style="border-color: black ; border-style: solid; width: 130px; height: 170;">
+                <img src="{{ digital.foto_impress_dig.url }}" width="120" height="160" style="margin-top: 10px;"> 
+            </div>
+        </div>
+        <div class="col-sm-4">   
+        </div>
+        <div class="col-sm-4">
+            <p>{{ digital.nome }}</p>
+            <p></p>
+            {% if request.user == digital.user %}
+                <a href="/digital/registro/?id={{digital.id}}"> <!-- '?id' passa para url como parametro-->
+                    <button type="button" class="btn btn-primary">Alterar</button>
+                </a>
+           
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                    data-target="#modal-confirm">Excluir</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
